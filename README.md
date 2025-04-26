@@ -1,8 +1,20 @@
 ## 👋 Hey there, I’m @SugarShaAYi !
 ### And welcome!
 
-You can call me SugarSha, or ss for short😆(Lazy enough).
+Here's my Github account.
 
-Here's my Github account, I'll be sharing some of my funny/unfunny ideas from time to time!
+**About name**
+- Too long to type?
+- You can call me *SugarSha*.
+- Or *ss* for short 😆 (Short enough, right?).
 
-In fact, I don't belong to **any** company.The one in my profile was a **joke**.
+**What I do?** 
+- I'm a Python 🐍 developer.
+- Sometimes I dabble in other programming languages.
+- Don't play Python in real life. 🤪
+
+I am passionate about bringing my quirky ideas to life. 🚀
+
+**What's AntYi Inc.?**
+- In fact, I don't belong to **any** company.
+- The one in my profile was just a **joke**. 🙃
