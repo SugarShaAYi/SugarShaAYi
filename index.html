@@ -1,42 +1,284 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>AntYi group(bushi)</title>
-	<base href="https://github.com/SugarShaAYi/">
-	<link rel="icon" href="https://sugarshaayi.github.io/SugarShaAYi/AYi.ico">
-	<style>
-		body {
-    		background: linear-gradient(to right,#ff0000,#ffa500,#ffff00,#7CFC00,#00ff00);
-    		height: 100%;
-    		margin: 0;
-			.centered-title {
-    			text-align: center;
-			}
-		p {
-    		text-indent: 2ch;
-		}
-		footer {
-    		text-align: center;
-    		padding: 10px;
-    		background-color: f8f9fa;
-    		color: 212529;
-		}
-		footer p {
-    		font-size: 12px;
-		}
-	}
-	</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AntYi group(bushi)</title>
+    <base href="https://github.com/SugarShaAYi/">
+    <link rel="icon" href="https://sugarshaayi.github.io/SugarShaAYi/AYi.ico">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(to right, #021a3b 0%, #0d2f55 25%, #1c5480 55%, #3b7bb3 85%, #5599cc 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            padding: 2rem 1rem;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #f0f4fa;
+        }
+        .box {
+            max-width: 780px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(2px);
+            border-radius: 24px;
+            padding: 2rem 2.2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+        }
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+        }
+        h1 span {
+            font-size: 0.7rem;
+            font-weight: 400;
+            opacity: 0.7;
+        }
+        .greeting {
+            text-align: center;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin: 0.8rem 0 1.2rem 0;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+        }
+        .greeting em {
+            font-style: italic;
+            color: #b8d6f0;
+        }
+        .greeting abbr {
+            text-decoration: underline dotted;
+            cursor: help;
+        }
+        .repo-list {
+            margin: 1.2rem 0;
+        }
+        .repo {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.3rem 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .repo:last-child {
+            border-bottom: none;
+        }
+        .repo a {
+            font-weight: 600;
+            color: #b8d6f0;
+            text-decoration: none;
+            min-width: 90px;
+        }
+        .repo a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+        .repo .desc {
+            flex: 1;
+            font-size: 0.92rem;
+            opacity: 0.85;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .repo .meta {
+            font-size: 0.78rem;
+            opacity: 0.7;
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+        .repo .lang::before {
+            content: "●";
+            color: #7bb8f0;
+            margin-right: 2px;
+        }
+        .status {
+            text-align: center;
+            padding: 1.8rem 0;
+            opacity: 0.8;
+        }
+        .spin {
+            display: inline-block;
+            width: 22px;
+            height: 22px;
+            border: 3px solid rgba(255, 255, 255, 0.15);
+            border-top-color: #7bb8f0;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+            margin-bottom: 0.3rem;
+        }
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .repo-count {
+            font-size: 0.95rem;
+            margin: 0.4rem 0 0.2rem 0;
+            opacity: 0.8;
+        }
+        .repo-count b {
+            font-weight: 600;
+            color: #fff;
+        }
+        .legacy-note {
+            font-size: 0.85rem;
+            opacity: 0.6;
+            margin: 0.2rem 0 0.6rem 0;
+            padding-left: 0.2rem;
+        }
+        .legacy-note a {
+            color: #b8d6f0;
+            text-decoration: none;
+        }
+        .legacy-note a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            padding: 0.8rem 1rem;
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 16px;
+            margin-top: 1.6rem;
+            font-size: 0.75rem;
+            line-height: 1.6;
+            opacity: 0.8;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        footer abbr {
+            text-decoration: underline dotted;
+            cursor: help;
+        }
+        @media (max-width: 600px) {
+            .box {
+                padding: 1.2rem 1rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+            .repo {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.1rem;
+            }
+            .repo .desc {
+                white-space: normal;
+            }
+            .greeting {
+                font-size: 0.92rem;
+            }
+        }
+    </style>
 </head>
 <body>
-	<h1 class="centered-title">AntYi group<span style="font-size: 10px;">(bushi)</span></h1>
-	<p class="centered-title">你好，<em>陌生人</em>亦或是<em>有缘人</em>，欢迎你来到我——SugarShaAntYi/ShenXiaozhu的Github仓库。</p>
-	<p class="centered-title">不过这儿现在<abbr title="不算这个类似index的玩意儿的话">没多少东西</abbr>。但是说不定以后会有很多呢。</p>
-	<p>现有<b>0</b>个项目</p>
-	<p>原有项目：<a href="./PyHexViewer/tree/main">PythonHexViewer</a>2025-4-26 已被删除</p>
-	<footer>
-		<p>AntYi Copystrights &deg;C 4697-4722<abbr title='"Yellow Emperor chronology" ， 即"黄帝纪年"'><em>Y.E.C.</em></abbr><br>AntYi group and its subsidiaries, employees. All strights reserved.</p>
-	</footer>
+    <div class="box">
+
+        <!-- ===== 标题 & 欢迎语（原样保留） ===== -->
+        <h1>AntYi group<span>(bushi)</span></h1>
+
+        <p class="greeting">
+            你好，<em>陌生人</em>亦或是<em>有缘人</em>，欢迎你来到我——SugarShaAntYi/ShenXiaozhu的Github仓库。
+        </p>
+        <p class="greeting" style="margin-top:-0.2rem;">
+            不过这儿现在<abbr title="不算这个类似index的玩意儿的话">没多少东西</abbr>。但是说不定以后会有很多呢。
+        </p>
+
+        <!-- ===== 动态仓库列表 ===== -->
+        <div class="repo-list" id="repoList">
+            <div class="status"><div class="spin"></div><div>正在加载仓库…</div></div>
+        </div>
+
+        <!-- ===== 项目计数 + 原有项目备注（保留原意） ===== -->
+        <p class="repo-count">现有 <b id="count">0</b> 个项目</p>
+        <p class="legacy-note">
+            原有项目：<a href="./PyHexViewer/tree/main">PythonHexViewer</a> 2025-4-26 已被删除
+        </p>
+
+        <!-- ===== 页脚版权（原样保留） ===== -->
+        <footer>
+            <p>AntYi Copystrights &deg;C 4697-4723<abbr title='"Yellow Emperor chronology" ， 即"黄帝纪年"'>Y.E.C.</abbr><br>AntYi group and its subsidiaries, employees. All strights reserved.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        (function() {
+            const USER = 'SugarShaAYi';
+            const URL = `https://api.github.com/users/${USER}/repos?sort=updated&per_page=20`;
+
+            const list = document.getElementById('repoList');
+            const countEl = document.getElementById('count');
+
+            function timeAgo(d) {
+                const s = (Date.now() - new Date(d).getTime()) / 1000;
+                if (s < 60) return '刚刚';
+                if (s < 3600) return Math.floor(s / 60) + '分钟前';
+                if (s < 86400) return Math.floor(s / 3600) + '小时前';
+                if (s < 604800) return Math.floor(s / 86400) + '天前';
+                return Math.floor(s / 604800) + '周前';
+            }
+
+            function render(repos) {
+                const total = repos ? repos.length : 0;
+                countEl.textContent = total;
+
+                if (!repos || total === 0) {
+                    list.innerHTML = '<div class="status">📭 暂时还没有公开仓库</div>';
+                    return;
+                }
+
+                let html = '';
+                for (const r of repos) {
+                    const lang = r.language ? `<span class="lang">${r.language}</span>` : '';
+                    const updated = timeAgo(r.updated_at);
+                    html += `
+                        <div class="repo">
+                            <a href="${r.html_url}" target="_blank">${r.name}</a>
+                            <span class="desc">${r.description || ''}</span>
+                            <span class="meta">${lang} 🕒${updated}</span>
+                        </div>
+                    `;
+                }
+                list.innerHTML = html;
+            }
+
+            async function fetchRepos() {
+                try {
+                    const res = await fetch(URL);
+                    if (!res.ok) throw new Error();
+                    const data = await res.json();
+                    render(data);
+                } catch (_) {
+                    list.innerHTML = `
+                        <div class="status">
+                            ⚠️ 加载失败
+                            <button onclick="location.reload()" style="
+                                background:rgba(255,255,255,0.12);
+                                border:1px solid rgba(255,255,255,0.2);
+                                color:#fff;
+                                padding:0.1rem 1rem;
+                                border-radius:20px;
+                                cursor:pointer;
+                                margin-left:0.5rem;
+                            ">重试</button>
+                        </div>
+                    `;
+                    countEl.textContent = '?';
+                }
+            }
+
+            fetchRepos();
+        })();
+    </script>
+
 </body>
 </html>
